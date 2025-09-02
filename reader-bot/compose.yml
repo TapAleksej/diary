@@ -16,6 +16,25 @@ services:
       timeout: 5s
       retries: 5
 
+  web-ui:
+    build:
+      context: ./web-ui
+    container_name: web-ui-container
+    env_file:
+      - ./.env
+    ports:
+      - "8080:80"
+    restart: always
+
+  bot:
+    build:
+      context: ./bot
+    container_name: bot-container
+    env_file:
+      - ./.env
+    ports:
+      - "8000:8000"
+    restart: always
 
 volumes:
   pg_data:

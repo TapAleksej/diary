@@ -132,7 +132,7 @@ async def get_books(
             param_count += 1
             base_query += f" AND user_id = ${param_count}"
             params.append(user_id)
-        
+
         if status:
             param_count += 1
             base_query += f" AND status = ${param_count}"
@@ -167,7 +167,7 @@ async def update_book(book_id: int, book: BookCreate):
     conn = await get_db_connection()
     try:
         query = """
-            UPDATE books 
+            UPDATE books
             SET user_id = $1, title = $2, author = $3, genre = $4, status = $5
             WHERE id = $6
             RETURNING *
@@ -189,7 +189,7 @@ async def update_book(book_id: int, book: BookCreate):
     finally:
         await conn.close()
 
-@app.delete("/api/books/{book_id}", status_code=204)
+@app.delete("/{book_id}", status_code=204)
 async def delete_book(book_id: int):
     conn = await get_db_connection()
     try:
