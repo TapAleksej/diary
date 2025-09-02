@@ -5,18 +5,17 @@ services:
     restart: always
     volumes:
       - pg_data:/var/lib/postgresql/data
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
-      - POSTGRES_USER: "${POSTGRES_USER}"
-      - POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
-      - POSTGRES_DB: "${POSTGRES_DB}"
-      - POSTGRES_HOST: "${POSTGRES_HOST}"
-      - POSTGRES_PORT: "${POSTGRES_PORT}"
-
+      POSTGRES_USER: "${POSTGRES_USER}"
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+      POSTGRES_DB: "${POSTGRES_DB}"
     healthcheck:
       test: ["CMD-SHELL", "sh -c 'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}'"]
       interval: 10s
       timeout: 5s
       retries: 5
+
 
 volumes:
   pg_data:
