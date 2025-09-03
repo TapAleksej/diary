@@ -59,3 +59,16 @@ curl -X POST "http://localhost:8000/api/books/" \
 # получить список книг по статусу
 curl "http://localhost:8000/api/books/?user_id=1&status=прочитано"
 ```
+
+
+curl http://localhost/api/books/?user_id=1&status=прочитано
+
+curl -X POST "http://localhost/api/books" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "user_id": 1,
+    "title": "Преступление и наказание",
+    "author": "Фёдор Достоевский",
+    "genre": "Классика",
+    "status": "прочитано"
+  }'
