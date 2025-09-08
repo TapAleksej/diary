@@ -1,0 +1,7 @@
+---
+# vars file for install-docker
+packages:
+  - ca-certificates
+  - curl
+  - gnupg2
+  - git

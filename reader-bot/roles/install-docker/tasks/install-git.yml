@@ -1,0 +1,15 @@
+---
+- name: check present git in remote hosts
+  command:  git --version
+  register: git_data
+  ignore_errors: yes
+
+- name: if exists git then print mesage
+  debug:
+    msg: "{{ git_data.stdout }} on {{ inventory_hostname }} is installed"
+  when:  git_data.rc == 0
+
+- name: if not exists git then print mesage
+  debug:
+    msg: "git  on {{ inventory_hostname }} is not installed"
+  when:  git_data.rc != 0
