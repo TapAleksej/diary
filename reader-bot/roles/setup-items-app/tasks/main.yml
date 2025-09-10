@@ -20,7 +20,8 @@
               POSTGRES_PORT={{ POSTGRES_PORT }}
               POSTGRES_HOST={{ POSTGRES_HOST }}
               TELEGRAM_TOKEN={{ TELEGRAM_TOKEN }}
-              imgweb={{ imgweb }}
+              BOT_IMAGE={{ BOT_IMAGE }}
+              WEBUI_IMAGE={{ WEBUI_IMAGE }}
     dest: "{{ prj_dir }}/reader-bot/.env"
 
 
