@@ -5,8 +5,8 @@
     state: latest
     update_cache: yes
 
-- name: Addd docker key
-  apt-key:
+- name: Add docker key
+  apt_key:
     url: https://download.docker.com/linux/debian/gpg
     state: present
 
@@ -28,4 +28,4 @@
   systemd:
     name: docker
     enabled: yes
-    stable: restarted
+    state: restarted

@@ -14,7 +14,6 @@
 - name: Create .env
   copy:
     content: |
-              "
               POSTGRES_DB={{ POSTGRES_DB }}
               POSTGRES_USER={{ POSTGRES_USER }}
               POSTGRES_PASSWORD={{ POSTGRES_PASSWORD }}
@@ -22,14 +21,13 @@
               POSTGRES_HOST={{ POSTGRES_HOST }}
               TELEGRAM_TOKEN={{ TELEGRAM_TOKEN }}
               imgweb={{ imgweb }}
-              "
-    dest: "{{ prj_dir }}/.env"
+    dest: "{{ prj_dir }}/reader-bot/.env"
 
 
 - name: Start app
   community.docker.docker_compose_v2:
     pull: always
-    project_src: "{{ prj_dir }}"
+    project_src: "{{ prj_dir }}/reader-bot"
   register: output
 
 - name: Check results
